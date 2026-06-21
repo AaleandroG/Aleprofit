@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AleProfit — Recursos, proveedores y oportunidades online</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FBF7F0;
@@ -21,6 +21,16 @@
     --radius: 14px;
     --shadow: 0 2px 8px rgba(31,36,32,0.04), 0 1px 2px rgba(31,36,32,0.04);
     --shadow-lift: 0 12px 28px rgba(31,36,32,0.10), 0 2px 6px rgba(31,36,32,0.06);
+
+    /* Tokens propios de la sección Apuestas (acento azul analítico) */
+    --bet-blue: #2654A6;
+    --bet-blue-dark:#1D3F80;
+    --bet-blue-soft: #E8EEF8;
+    --bet-green: #1C7A53;
+    --bet-green-soft:#E5F3EC;
+    --bet-red:#B23B3B;
+    --bet-red-soft:#FBEAEA;
+    --bet-line-strong:#CFCABB;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -558,6 +568,174 @@
     flex-wrap:wrap;gap:10px;
   }
 
+  /* ===== SECCIÓN APUESTAS ===== */
+  .bet-section{
+    background:var(--bg-soft);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .bet-rr-bar{
+    background:var(--ink); color:#D9D5C8;
+    font-size:12.5px; text-align:center; padding:9px 16px;
+    border-radius:10px; margin-bottom:36px;
+  }
+  .bet-rr-bar b{color:#fff;}
+  .bet-rr-bar a{text-decoration:underline; color:#fff;}
+
+  .bet-kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--bet-blue-dark);
+  }
+  .bet-kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--bet-blue);}
+
+  .bet-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;margin-bottom:56px;}
+  .bet-hero-grid h3{font-size:clamp(28px,3.6vw,40px);line-height:1.1;margin:14px 0 16px;font-family:'Fraunces',serif;font-weight:600;}
+  .bet-hero-grid h3 .bet-accent{color:var(--bet-blue);}
+  .bet-hero-grid p.bet-lead{font-size:16.5px;color:var(--ink-soft);max-width:460px;margin-bottom:22px;}
+  .bet-hero-disclaimer{
+    display:flex; gap:10px; align-items:flex-start;
+    background:var(--bet-blue-soft); border:1px solid #C9D6EC;
+    border-radius:10px; padding:14px 16px; font-size:13px; color:var(--bet-blue-dark); max-width:460px;
+  }
+  .bet-hero-disclaimer b{font-weight:700;}
+
+  .bet-stat-panel{
+    background:var(--ink); border-radius:var(--radius); padding:22px;
+    box-shadow:var(--shadow-lift);
+  }
+  .bet-sp-head{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11.5px; color:#9B9686; letter-spacing:.05em; text-transform:uppercase;
+    margin-bottom:16px; font-weight:600;
+  }
+  .bet-sp-row{display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #33373E;}
+  .bet-sp-row:last-child{border-bottom:none;}
+  .bet-sp-label{font-size:13px;color:#C9C5B8;}
+  .bet-sp-val{font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:600;color:#fff;}
+  .bet-sp-val.pos{color:#6FCF97;}
+  .bet-sp-val.neg{color:#EB7575;}
+
+  .bet-tools-nav{
+    display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;
+    border-bottom:1px solid var(--line); padding-bottom:22px;
+  }
+  .bet-tools-nav a{
+    font-size:13px; font-weight:600; padding:9px 16px;
+    border-radius:999px; border:1.5px solid var(--bet-line-strong);
+    background:var(--card); transition:all .15s; color:var(--ink-soft);
+  }
+  .bet-tools-nav a:hover{border-color:var(--bet-blue); color:var(--bet-blue-dark);}
+
+  .bet-calc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-bottom:56px;}
+  .bet-calc-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; scroll-margin-top:90px;
+  }
+  .bet-calc-card.wide{grid-column:1/-1;}
+  .bet-calc-icon{
+    width:38px;height:38px;border-radius:9px;background:var(--bet-blue-soft);
+    display:flex;align-items:center;justify-content:center;font-size:17px;
+  }
+  .bet-calc-card h4{font-size:18px; margin:13px 0 6px; font-family:'Fraunces',serif; font-weight:600;}
+  .bet-calc-card > p.bet-desc{font-size:13.5px; color:var(--ink-soft); margin-bottom:20px;}
+
+  .bet-field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+  .bet-field{display:flex; flex-direction:column; gap:6px;}
+  .bet-field.full{grid-column:1/-1;}
+  .bet-field label{font-size:12.5px; font-weight:600; color:var(--ink-soft); display:flex; justify-content:space-between;}
+  .bet-field label .bet-unit{font-weight:500; color:#A09C8F; font-size:11.5px;}
+  .bet-field input, .bet-field select{
+    border:1.5px solid var(--bet-line-strong); border-radius:8px; padding:10px 12px;
+    font-size:14.5px; font-family:'JetBrains Mono',monospace; background:var(--bg-soft);
+    color:var(--ink); transition:border-color .15s; width:100%;
+  }
+  .bet-field input:focus, .bet-field select:focus{border-color:var(--bet-blue); outline:none;}
+
+  .bet-result{
+    margin-top:16px; padding:18px; border-radius:10px;
+    background:var(--bet-blue-soft); border:1px solid #C9D6EC;
+    display:grid; gap:10px;
+  }
+  .bet-result-row{display:flex; justify-content:space-between; align-items:baseline;}
+  .bet-result-row .bet-rlabel{font-size:13px; color:var(--bet-blue-dark); font-weight:600;}
+  .bet-result-row .bet-rval{font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--ink);}
+  .bet-result-row .bet-rval.big{font-size:21px;}
+  .bet-result-row.muted .bet-rval{font-size:14px; font-weight:600; color:var(--ink-soft);}
+  .bet-result-divider{height:1px;background:#C9D6EC;margin:2px 0;}
+
+  .bet-result.positive{background:var(--bet-green-soft); border-color:#BFE3D0;}
+  .bet-result.positive .bet-rlabel{color:var(--bet-green);}
+  .bet-result.negative{background:var(--bet-red-soft); border-color:#E8C2C2;}
+  .bet-result.negative .bet-rlabel{color:var(--bet-red);}
+
+  .bet-calc-note{
+    margin-top:14px; font-size:12px; color:var(--ink-soft); line-height:1.5;
+    border-top:1px dashed var(--line); padding-top:12px;
+  }
+
+  .bet-odds-toggle{display:flex; gap:8px; margin-bottom:16px;}
+  .bet-odds-toggle button{
+    flex:1; padding:8px; border-radius:7px; border:1.5px solid var(--bet-line-strong);
+    background:var(--bg-soft); font-size:12.5px; font-weight:600; cursor:pointer; color:var(--ink-soft);
+    transition:all .15s;
+  }
+  .bet-odds-toggle button.active{background:var(--bet-blue); color:#fff; border-color:var(--bet-blue);}
+
+  .bet-conv-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .bet-conv-out{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:9px;
+    padding:14px; text-align:center;
+  }
+  .bet-conv-out .bet-clabel{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:700; margin-bottom:6px;}
+  .bet-conv-out .bet-cval{font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--bet-blue-dark);}
+
+  .bet-edu-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:56px;}
+  .bet-edu-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px;}
+  .bet-edu-card .bet-num{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--bet-blue); font-weight:700; margin-bottom:9px;}
+  .bet-edu-card h5{font-size:16px; margin-bottom:8px; font-weight:600;}
+  .bet-edu-card p{font-size:13.5px; color:var(--ink-soft);}
+
+  .bet-roadmap-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:48px;}
+  .bet-road-card{
+    border:1.5px dashed var(--bet-line-strong); border-radius:var(--radius); padding:20px;
+  }
+  .bet-road-card .bet-status{
+    font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--bet-blue-dark); background:var(--bet-blue-soft); padding:3px 9px; border-radius:6px; display:inline-block; margin-bottom:11px;
+  }
+  .bet-road-card h5{font-size:15px; margin-bottom:6px; font-weight:600;}
+  .bet-road-card p{font-size:12.5px; color:var(--ink-soft);}
+
+  .bet-rg-strip{
+    background:var(--ink); border-radius:18px; padding:32px 36px;
+    display:grid; grid-template-columns:auto 1fr auto; gap:26px; align-items:center;
+  }
+  .bet-rg-icon{
+    width:48px;height:48px;border-radius:11px;background:#2A2F37;
+    display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+  }
+  .bet-rg-strip h5{color:#fff; font-size:18px; margin-bottom:6px; font-weight:600;}
+  .bet-rg-strip p{color:#B8B4A6; font-size:13px; max-width:480px;}
+  .bet-rg-strip .btn-ghost{border-color:#454A52; color:#fff;}
+  .bet-rg-strip .btn-ghost:hover{border-color:#fff;}
+
+  @media (max-width:980px){
+    .bet-hero-grid{grid-template-columns:1fr; gap:30px;}
+    .bet-calc-grid{grid-template-columns:1fr;}
+    .bet-edu-grid{grid-template-columns:1fr 1fr;}
+    .bet-roadmap-grid{grid-template-columns:1fr 1fr;}
+    .bet-conv-grid{grid-template-columns:1fr 1fr;}
+    .bet-rg-strip{grid-template-columns:1fr; text-align:center;}
+    .bet-rg-icon{margin:0 auto;}
+  }
+  @media (max-width:680px){
+    .bet-edu-grid{grid-template-columns:1fr;}
+    .bet-roadmap-grid{grid-template-columns:1fr;}
+    .bet-conv-grid{grid-template-columns:1fr;}
+    .bet-field-row{grid-template-columns:1fr;}
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width:980px){
     .hero-grid{grid-template-columns:1fr; gap:36px;}
@@ -598,7 +776,7 @@
       <a href="#temu">Ofertas</a>
       <a href="#proveedores">Proveedores</a>
       <a href="#recursos">Recursos</a>
-      <a href="apuestas.html">Apuestas</a>
+      <a href="#apuestas">Apuestas</a>
       <a href="#sobre">Sobre el proyecto</a>
     </div>
     <div class="nav-cta">
@@ -713,7 +891,7 @@
       <div class="feature-card">
         <div class="icon ic-2" style="background:#E8EEF8;">📐</div>
         <h3>Apuestas con datos</h3>
-        <p>Calculadoras de stake, bankroll y valor esperado para decidir con criterio, no con instinto. <a href="apuestas.html" style="color:var(--accent-dark); font-weight:700;">Ver herramientas →</a></p>
+        <p>Calculadoras de stake, bankroll y valor esperado para decidir con criterio, no con instinto. <a href="#apuestas" style="color:var(--accent-dark); font-weight:700;">Ver herramientas →</a></p>
       </div>
     </div>
   </div>
@@ -889,6 +1067,291 @@
   </div>
 </section>
 
+<!-- APUESTAS -->
+<section id="apuestas" class="bet-section">
+  <div class="wrap">
+
+    <div class="bet-rr-bar">🔒 Juega con cabeza: estas herramientas son de análisis, no garantizan beneficios. <b>+18</b> · Ayuda: <a href="https://www.jugarbien.es" target="_blank" rel="noopener">jugarbien.es</a></div>
+
+    <div class="section-head">
+      <span class="bet-kicker">Estadística · gestión de riesgo · herramientas</span>
+      <h2>Apuestas con datos, no con instinto</h2>
+      <p>Calculadoras y recursos para entender cuotas, valor esperado y gestión de bankroll. Sin pronósticos ni "apuesta segura": solo las matemáticas que hay detrás de cada apuesta.</p>
+    </div>
+
+    <div class="bet-hero-grid">
+      <div>
+        <span class="bet-kicker">Por qué esta sección existe</span>
+        <h3>Decide con números, <span class="bet-accent">no con corazonadas</span>.</h3>
+        <p class="bet-lead">Estas herramientas sirven para evaluar cuotas y gestionar tu capital con criterio. No predicen resultados ni prometen ganancias.</p>
+        <div class="bet-hero-disclaimer">
+          <span>⚠️</span>
+          <span><b>Esto no es una garantía de ganancia.</b> Las apuestas deportivas implican riesgo real de pérdida de dinero. Estas herramientas ayudan a decidir mejor, no a predecir resultados.</span>
+        </div>
+      </div>
+      <div class="bet-stat-panel">
+        <div class="bet-sp-head"><span>Panel de referencia</span><span>EJEMPLO</span></div>
+        <div class="bet-sp-row"><span class="bet-sp-label">Cuota decimal</span><span class="bet-sp-val">2.40</span></div>
+        <div class="bet-sp-row"><span class="bet-sp-label">Probabilidad implícita</span><span class="bet-sp-val">41.7%</span></div>
+        <div class="bet-sp-row"><span class="bet-sp-label">Stake recomendado (bankroll 500€)</span><span class="bet-sp-val">12.50€</span></div>
+        <div class="bet-sp-row"><span class="bet-sp-label">Beneficio potencial</span><span class="bet-sp-val pos">+17.50€</span></div>
+        <div class="bet-sp-row"><span class="bet-sp-label">Valor esperado (EV)</span><span class="bet-sp-val neg">-1.2%</span></div>
+      </div>
+    </div>
+
+    <nav class="bet-tools-nav">
+      <a href="#calc-stake">Calculadora de stake</a>
+      <a href="#calc-bankroll">Gestión de bankroll</a>
+      <a href="#calc-ev">Valor esperado (EV)</a>
+      <a href="#calc-conversor">Conversor de cuotas</a>
+      <a href="#calc-beneficio">Beneficio potencial</a>
+    </nav>
+
+    <div class="bet-calc-grid">
+
+      <!-- STAKE CALCULATOR -->
+      <div class="bet-calc-card" id="calc-stake">
+        <div class="bet-calc-icon">🎯</div>
+        <h4>Calculadora de stake</h4>
+        <p class="bet-desc">Calcula cuánto apostar según tu bankroll y el nivel de riesgo que defines.</p>
+
+        <div class="bet-field-row">
+          <div class="bet-field">
+            <label>Bankroll total <span class="bet-unit">€</span></label>
+            <input type="number" id="stk-bankroll" value="500" min="0" step="1">
+          </div>
+          <div class="bet-field">
+            <label>% del bankroll por apuesta <span class="bet-unit">%</span></label>
+            <input type="number" id="stk-percent" value="2.5" min="0.1" max="100" step="0.1">
+          </div>
+        </div>
+        <div class="bet-field-row">
+          <div class="bet-field full">
+            <label>Nivel de confianza en la apuesta</label>
+            <select id="stk-confidence">
+              <option value="0.5">Baja (x0.5 del stake base)</option>
+              <option value="1" selected>Normal (x1 del stake base)</option>
+              <option value="1.5">Alta (x1.5 del stake base)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bet-result" id="stk-result">
+          <div class="bet-result-row"><span class="bet-rlabel">Stake recomendado</span><span class="bet-rval big" id="stk-out">12.50€</span></div>
+          <div class="bet-result-divider"></div>
+          <div class="bet-result-row muted"><span class="bet-rlabel">% real sobre bankroll</span><span class="bet-rval" id="stk-pct-out">2.5%</span></div>
+        </div>
+        <p class="bet-calc-note">El stake fijo en % es la base de cualquier gestión de bankroll seria: evita que una mala racha te deje sin capital para seguir con criterio.</p>
+      </div>
+
+      <!-- BANKROLL CALCULATOR -->
+      <div class="bet-calc-card" id="calc-bankroll">
+        <div class="bet-calc-icon">📊</div>
+        <h4>Gestión de bankroll</h4>
+        <p class="bet-desc">Proyecta cómo evoluciona tu bankroll según tu unidad de apuesta y tu ROI histórico.</p>
+
+        <div class="bet-field-row">
+          <div class="bet-field">
+            <label>Bankroll inicial <span class="bet-unit">€</span></label>
+            <input type="number" id="bk-initial" value="500" min="0" step="1">
+          </div>
+          <div class="bet-field">
+            <label>Unidad de apuesta <span class="bet-unit">% bankroll</span></label>
+            <input type="number" id="bk-unit" value="2" min="0.1" max="100" step="0.1">
+          </div>
+        </div>
+        <div class="bet-field-row">
+          <div class="bet-field">
+            <label>ROI estimado histórico <span class="bet-unit">%</span></label>
+            <input type="number" id="bk-roi" value="3" step="0.1">
+          </div>
+          <div class="bet-field">
+            <label>Número de apuestas a simular</label>
+            <input type="number" id="bk-bets" value="50" min="1" step="1">
+          </div>
+        </div>
+
+        <div class="bet-result" id="bk-result">
+          <div class="bet-result-row"><span class="bet-rlabel">Bankroll proyectado</span><span class="bet-rval big" id="bk-out">579.50€</span></div>
+          <div class="bet-result-divider"></div>
+          <div class="bet-result-row muted"><span class="bet-rlabel">Stake por apuesta (unidad actual)</span><span class="bet-rval" id="bk-stake-out">10.00€</span></div>
+          <div class="bet-result-row muted"><span class="bet-rlabel">Variación total</span><span class="bet-rval" id="bk-var-out">+15.9%</span></div>
+        </div>
+        <p class="bet-calc-note">Esta proyección asume un ROI constante, lo cual <b>no ocurre en la realidad</b>. Es una herramienta para entender el efecto del tamaño de stake, no una predicción.</p>
+      </div>
+
+      <!-- EV CALCULATOR -->
+      <div class="bet-calc-card" id="calc-ev">
+        <div class="bet-calc-icon">📐</div>
+        <h4>Calculadora de valor esperado (EV)</h4>
+        <p class="bet-desc">Compara tu probabilidad estimada con la implícita en la cuota, para saber si la apuesta tiene valor matemático.</p>
+
+        <div class="bet-field-row">
+          <div class="bet-field">
+            <label>Cuota decimal ofrecida</label>
+            <input type="number" id="ev-odds" value="2.40" min="1.01" step="0.01">
+          </div>
+          <div class="bet-field">
+            <label>Tu probabilidad estimada <span class="bet-unit">%</span></label>
+            <input type="number" id="ev-prob" value="38" min="0.1" max="99.9" step="0.1">
+          </div>
+        </div>
+        <div class="bet-field-row">
+          <div class="bet-field full">
+            <label>Stake a evaluar <span class="bet-unit">€</span></label>
+            <input type="number" id="ev-stake" value="10" min="0" step="1">
+          </div>
+        </div>
+
+        <div class="bet-result" id="ev-result">
+          <div class="bet-result-row"><span class="bet-rlabel">EV de la apuesta</span><span class="bet-rval big" id="ev-out">-2.80%</span></div>
+          <div class="bet-result-divider"></div>
+          <div class="bet-result-row muted"><span class="bet-rlabel">Probabilidad implícita de la cuota</span><span class="bet-rval" id="ev-implied-out">41.7%</span></div>
+          <div class="bet-result-row muted"><span class="bet-rlabel">EV en € sobre el stake</span><span class="bet-rval" id="ev-eur-out">-0.28€</span></div>
+        </div>
+        <p class="bet-calc-note">EV positivo significa que, si tu estimación de probabilidad es correcta, la apuesta es matemáticamente favorable a largo plazo. No garantiza ganar esa apuesta en concreto.</p>
+      </div>
+
+      <!-- ODDS CONVERTER -->
+      <div class="bet-calc-card" id="calc-conversor">
+        <div class="bet-calc-icon">🔁</div>
+        <h4>Conversor de cuotas</h4>
+        <p class="bet-desc">Convierte entre formato decimal, fraccionario y americano, con probabilidad implícita al instante.</p>
+
+        <div class="bet-odds-toggle">
+          <button class="active" data-fmt="decimal" onclick="setOddsFormat('decimal')">Decimal</button>
+          <button data-fmt="fraction" onclick="setOddsFormat('fraction')">Fraccionaria</button>
+          <button data-fmt="american" onclick="setOddsFormat('american')">Americana</button>
+        </div>
+
+        <div class="bet-field-row">
+          <div class="bet-field full">
+            <label id="conv-input-label">Cuota decimal</label>
+            <input type="text" id="conv-input" value="2.40">
+          </div>
+        </div>
+
+        <div class="bet-conv-grid">
+          <div class="bet-conv-out"><div class="bet-clabel">Decimal</div><div class="bet-cval" id="conv-decimal">2.40</div></div>
+          <div class="bet-conv-out"><div class="bet-clabel">Fraccionaria</div><div class="bet-cval" id="conv-fraction">7/5</div></div>
+          <div class="bet-conv-out"><div class="bet-clabel">Americana</div><div class="bet-cval" id="conv-american">+140</div></div>
+        </div>
+        <div class="bet-result" style="margin-top:14px;">
+          <div class="bet-result-row"><span class="bet-rlabel">Probabilidad implícita</span><span class="bet-rval" id="conv-prob">41.67%</span></div>
+        </div>
+      </div>
+
+      <!-- PROFIT CALCULATOR -->
+      <div class="bet-calc-card wide" id="calc-beneficio">
+        <div class="bet-calc-icon">💶</div>
+        <h4>Calculadora de beneficio potencial</h4>
+        <p class="bet-desc">Calcula el beneficio neto, el retorno total y el rendimiento sobre el stake para una apuesta simple o combinada.</p>
+
+        <div class="bet-field-row" style="grid-template-columns:1fr 1fr 1fr;">
+          <div class="bet-field">
+            <label>Stake <span class="bet-unit">€</span></label>
+            <input type="number" id="profit-stake" value="20" min="0" step="1">
+          </div>
+          <div class="bet-field">
+            <label>Cuota 1</label>
+            <input type="number" id="profit-odds1" value="1.85" min="1.01" step="0.01">
+          </div>
+          <div class="bet-field">
+            <label>Cuota 2 <span class="bet-unit">opcional</span></label>
+            <input type="number" id="profit-odds2" value="" min="1.01" step="0.01" placeholder="—">
+          </div>
+        </div>
+
+        <div class="bet-result" id="profit-result">
+          <div class="bet-result-row"><span class="bet-rlabel">Cuota combinada total</span><span class="bet-rval" id="profit-combined">1.85</span></div>
+          <div class="bet-result-divider"></div>
+          <div class="bet-result-row"><span class="bet-rlabel">Retorno total si gana</span><span class="bet-rval big" id="profit-return">37.00€</span></div>
+          <div class="bet-result-row"><span class="bet-rlabel">Beneficio neto</span><span class="bet-rval pos" id="profit-net">+17.00€</span></div>
+          <div class="bet-result-row muted"><span class="bet-rlabel">Rendimiento sobre el stake</span><span class="bet-rval" id="profit-roi">85%</span></div>
+        </div>
+        <p class="bet-calc-note">Añade una segunda cuota para calcular una combinada simple. El resultado muestra el escenario en que <b>todas</b> las selecciones aciertan.</p>
+      </div>
+
+    </div>
+
+    <div class="section-head">
+      <span class="bet-kicker">Educación</span>
+      <h2>Conceptos que toda apuesta informada necesita</h2>
+      <p>Antes de usar cualquier calculadora, vale la pena entender qué significan realmente estos números.</p>
+    </div>
+    <div class="bet-edu-grid">
+      <div class="bet-edu-card">
+        <div class="bet-num">01</div>
+        <h5>Probabilidad implícita</h5>
+        <p>Toda cuota esconde una probabilidad que la casa asigna al resultado. Entenderla es el primer paso para detectar si una apuesta tiene sentido.</p>
+      </div>
+      <div class="bet-edu-card">
+        <div class="bet-num">02</div>
+        <h5>Valor esperado (EV)</h5>
+        <p>El EV compara tu estimación de probabilidad con la del mercado. Es el concepto central de cualquier enfoque analítico de apuestas.</p>
+      </div>
+      <div class="bet-edu-card">
+        <div class="bet-num">03</div>
+        <h5>Gestión de bankroll</h5>
+        <p>Cuánto apostar es, a menudo, más importante que qué apostar. Una mala gestión del capital arruina incluso estrategias con valor real.</p>
+      </div>
+      <div class="bet-edu-card">
+        <div class="bet-num">04</div>
+        <h5>Varianza y muestra</h5>
+        <p>Ganar o perder unas pocas apuestas no confirma ni desmiente una estrategia. Los resultados solo se interpretan con muestras grandes.</p>
+      </div>
+      <div class="bet-edu-card">
+        <div class="bet-num">05</div>
+        <h5>El margen de la casa</h5>
+        <p>Las cuotas incluyen un margen comercial. Conocerlo ayuda a entender por qué ninguna estrategia gana siempre a largo plazo.</p>
+      </div>
+      <div class="bet-edu-card">
+        <div class="bet-num">06</div>
+        <h5>Sesgos del apostador</h5>
+        <p>Confirmación, apuesta de recuperación, exceso de confianza: los errores psicológicos cuestan más dinero que las malas cuotas.</p>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <span class="bet-kicker">Hoja de ruta</span>
+      <h2>Lo que se añadirá a esta sección</h2>
+      <p>Construida para crecer sin rehacer nada: cada bloque nuevo se añade sobre la misma estructura de datos y diseño.</p>
+    </div>
+    <div class="bet-roadmap-grid">
+      <div class="bet-road-card">
+        <span class="bet-status">Próximamente</span>
+        <h5>Seguimiento de apuestas</h5>
+        <p>Registro personal de tus apuestas con resultado, stake y ROI acumulado.</p>
+      </div>
+      <div class="bet-road-card">
+        <span class="bet-status">Próximamente</span>
+        <h5>Dashboards estadísticos</h5>
+        <p>Paneles visuales por deporte, liga o mercado con métricas de rendimiento.</p>
+      </div>
+      <div class="bet-road-card">
+        <span class="bet-status">Próximamente</span>
+        <h5>Análisis deportivo</h5>
+        <p>Contenido sobre estadística aplicada a fútbol, tenis y otros deportes.</p>
+      </div>
+      <div class="bet-road-card">
+        <span class="bet-status">Próximamente</span>
+        <h5>Herramientas premium</h5>
+        <p>Calculadoras avanzadas (arbitraje, surebets, simulación Montecarlo).</p>
+      </div>
+    </div>
+
+    <div class="bet-rg-strip">
+      <div class="bet-rg-icon">🛟</div>
+      <div>
+        <h5>El juego debe ser entretenimiento, no una fuente de ingresos</h5>
+        <p>Si sientes que apostar deja de ser algo que controlas, busca ayuda. Ofrecemos herramientas analíticas, no incentivamos el juego ni prometemos resultados.</p>
+      </div>
+      <a href="https://www.jugarbien.es" target="_blank" rel="noopener" class="btn btn-ghost">Recursos de ayuda →</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- TRUST STRIP -->
 <section class="trust-strip">
   <div class="wrap">
@@ -953,6 +1416,181 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // ---------- Helpers (sección Apuestas) ----------
+  const betFmtEUR = n => (isFinite(n) ? n.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:2}) + '€' : '—');
+  const betFmtPct = n => (isFinite(n) ? (n>=0?'+':'') + n.toFixed(2) + '%' : '—');
+  const betSetResultState = (el, positive) => {
+    el.classList.remove('positive','negative');
+    if(positive === true) el.classList.add('positive');
+    if(positive === false) el.classList.add('negative');
+  };
+
+  // ---------- STAKE CALCULATOR ----------
+  function calcStake(){
+    const bankroll = parseFloat(document.getElementById('stk-bankroll').value) || 0;
+    const percent = parseFloat(document.getElementById('stk-percent').value) || 0;
+    const conf = parseFloat(document.getElementById('stk-confidence').value) || 1;
+    const base = bankroll * (percent/100);
+    const stake = base * conf;
+    const realPct = bankroll > 0 ? (stake/bankroll)*100 : 0;
+    document.getElementById('stk-out').textContent = betFmtEUR(stake);
+    document.getElementById('stk-pct-out').textContent = realPct.toFixed(2) + '%';
+  }
+  ['stk-bankroll','stk-percent','stk-confidence'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', calcStake);
+    document.getElementById(id).addEventListener('change', calcStake);
+  });
+
+  // ---------- BANKROLL PROJECTION ----------
+  function calcBankroll(){
+    const initial = parseFloat(document.getElementById('bk-initial').value) || 0;
+    const unitPct = parseFloat(document.getElementById('bk-unit').value) || 0;
+    const roi = parseFloat(document.getElementById('bk-roi').value) || 0;
+    const bets = parseInt(document.getElementById('bk-bets').value) || 0;
+
+    const stakePerBet = initial * (unitPct/100);
+    const profitPerBet = stakePerBet * (roi/100);
+    const projected = initial + (profitPerBet * bets);
+    const variation = initial > 0 ? ((projected - initial)/initial)*100 : 0;
+
+    document.getElementById('bk-out').textContent = betFmtEUR(projected);
+    document.getElementById('bk-stake-out').textContent = betFmtEUR(stakePerBet);
+    document.getElementById('bk-var-out').textContent = betFmtPct(variation);
+
+    const resEl = document.getElementById('bk-result');
+    betSetResultState(resEl, variation > 0 ? true : (variation < 0 ? false : null));
+  }
+  ['bk-initial','bk-unit','bk-roi','bk-bets'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', calcBankroll);
+  });
+
+  // ---------- EV CALCULATOR ----------
+  function calcEV(){
+    const odds = parseFloat(document.getElementById('ev-odds').value) || 0;
+    const probPct = parseFloat(document.getElementById('ev-prob').value) || 0;
+    const stake = parseFloat(document.getElementById('ev-stake').value) || 0;
+    const prob = probPct/100;
+
+    const impliedProb = odds > 0 ? (1/odds)*100 : 0;
+    const evPct = (prob * (odds-1) - (1-prob)) * 100;
+    const evEur = stake * (evPct/100);
+
+    document.getElementById('ev-out').textContent = betFmtPct(evPct);
+    document.getElementById('ev-implied-out').textContent = impliedProb.toFixed(2) + '%';
+    document.getElementById('ev-eur-out').textContent = (evEur>=0?'+':'') + betFmtEUR(evEur);
+
+    const resEl = document.getElementById('ev-result');
+    betSetResultState(resEl, evPct > 0 ? true : (evPct < 0 ? false : null));
+  }
+  ['ev-odds','ev-prob','ev-stake'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', calcEV);
+  });
+
+  // ---------- ODDS CONVERTER ----------
+  let betCurrentFormat = 'decimal';
+  function setOddsFormat(fmt){
+    betCurrentFormat = fmt;
+    document.querySelectorAll('.bet-odds-toggle button').forEach(b=>b.classList.remove('active'));
+    document.querySelector(`.bet-odds-toggle button[data-fmt="${fmt}"]`).classList.add('active');
+    const label = document.getElementById('conv-input-label');
+    const input = document.getElementById('conv-input');
+    if(fmt === 'decimal'){ label.textContent = 'Cuota decimal'; input.value = '2.40'; }
+    if(fmt === 'fraction'){ label.textContent = 'Cuota fraccionaria (ej: 7/5)'; input.value = '7/5'; }
+    if(fmt === 'american'){ label.textContent = 'Cuota americana (ej: +140 o -120)'; input.value = '+140'; }
+    convertOdds();
+  }
+
+  function betToDecimalFromAny(value, fmt){
+    if(fmt === 'decimal'){
+      const d = parseFloat(value);
+      return isFinite(d) && d > 1 ? d : null;
+    }
+    if(fmt === 'fraction'){
+      const parts = value.split('/');
+      if(parts.length !== 2) return null;
+      const num = parseFloat(parts[0]), den = parseFloat(parts[1]);
+      if(!isFinite(num) || !isFinite(den) || den === 0) return null;
+      return 1 + (num/den);
+    }
+    if(fmt === 'american'){
+      const a = parseFloat(value);
+      if(!isFinite(a) || a === 0) return null;
+      if(a > 0) return 1 + (a/100);
+      return 1 + (100/Math.abs(a));
+    }
+    return null;
+  }
+
+  function betDecimalToFraction(dec){
+    const frac = dec - 1;
+    let bestNum = Math.round(frac*100), bestDen = 100;
+    const gcd = (a,b) => b ? gcd(b, a%b) : a;
+    const g = gcd(bestNum, bestDen) || 1;
+    bestNum = bestNum/g; bestDen = bestDen/g;
+    if(bestNum === 0) bestNum = 1;
+    return `${bestNum}/${bestDen}`;
+  }
+
+  function betDecimalToAmerican(dec){
+    if(dec >= 2){
+      return '+' + Math.round((dec-1)*100);
+    } else {
+      return Math.round(-100/(dec-1)).toString();
+    }
+  }
+
+  function convertOdds(){
+    const raw = document.getElementById('conv-input').value.trim();
+    const dec = betToDecimalFromAny(raw, betCurrentFormat);
+    if(dec === null || dec <= 1){
+      document.getElementById('conv-decimal').textContent = '—';
+      document.getElementById('conv-fraction').textContent = '—';
+      document.getElementById('conv-american').textContent = '—';
+      document.getElementById('conv-prob').textContent = '—';
+      return;
+    }
+    document.getElementById('conv-decimal').textContent = dec.toFixed(2);
+    document.getElementById('conv-fraction').textContent = betDecimalToFraction(dec);
+    document.getElementById('conv-american').textContent = betDecimalToAmerican(dec);
+    const implied = (1/dec)*100;
+    document.getElementById('conv-prob').textContent = implied.toFixed(2) + '%';
+  }
+  document.getElementById('conv-input').addEventListener('input', convertOdds);
+
+  // ---------- PROFIT CALCULATOR ----------
+  function calcProfit(){
+    const stake = parseFloat(document.getElementById('profit-stake').value) || 0;
+    const odds1 = parseFloat(document.getElementById('profit-odds1').value) || 0;
+    const odds2raw = document.getElementById('profit-odds2').value;
+    const odds2 = parseFloat(odds2raw);
+
+    let combined = odds1;
+    if(odds2raw !== '' && isFinite(odds2) && odds2 > 1){
+      combined = odds1 * odds2;
+    }
+
+    const totalReturn = stake * combined;
+    const net = totalReturn - stake;
+    const roi = stake > 0 ? (net/stake)*100 : 0;
+
+    document.getElementById('profit-combined').textContent = combined.toFixed(2);
+    document.getElementById('profit-return').textContent = betFmtEUR(totalReturn);
+    document.getElementById('profit-net').textContent = (net>=0?'+':'') + betFmtEUR(net);
+    document.getElementById('profit-roi').textContent = roi.toFixed(1) + '%';
+  }
+  ['profit-stake','profit-odds1','profit-odds2'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', calcProfit);
+  });
+
+  // ---------- INIT (sección Apuestas) ----------
+  calcStake();
+  calcBankroll();
+  calcEV();
+  convertOdds();
+  calcProfit();
+</script>
 
 </body>
 </html>
